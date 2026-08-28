@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Orbitron", "Space Grotesk", sans-serif;
+  --font-body: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+  --color-void: #04060d;
+  --color-hull: #0a1120;
+  --color-hull-2: #0e1729;
+  --color-line: #1d2b45;
+  --color-fog: #8fa3c4;
+  --color-fog-dim: #5c6f92;
+  --color-icefog: #c9d8f2;
+  --color-solar: #ffc94d;
+  --color-ember: #ff9b3d;
+  --color-signal: #57e6c3;
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  background: var(--color-void);
+  color: var(--color-icefog);
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(255, 201, 77, 0.28);
+  color: #fff;
+}
+
+/* ---------- scrollbars ---------- */
+.slim-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.slim-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background: #223252;
+  border-radius: 99px;
+}
+.slim-scroll::-webkit-scrollbar-thumb:hover {
+  background: #33497a;
+}
+
+/* ---------- keyframes ---------- */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes panel-in-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ping-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(87, 230, 195, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(87, 230, 195, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(87, 230, 195, 0);
+  }
+}
+@keyframes ping-dot-amber {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 155, 61, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(255, 155, 61, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 155, 61, 0);
+  }
+}
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes shimmer-line {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.anim-rise {
+  animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.anim-panel {
+  animation: panel-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (max-width: 767px) {
+  .anim-panel {
+    animation: panel-in-mobile 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+.dot-live {
+  animation: ping-dot 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.dot-paused {
+  animation: ping-dot-amber 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.brand-ring {
+  animation: slow-spin 14s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+kbd {
+  font-family: var(--font-data);
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 5px;
+  border: 1px solid #263a60;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: #0d1628;
+  color: #9fb3d6;
+}
